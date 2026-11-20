@@ -20,6 +20,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let env = AppEnvironment.shared
         env.prepareSpeech()
         env.showPill()
+        env.startPruning()
         if !Permissions.accessibility { Permissions.promptAccessibility() }
         env.startHotkeys()
     }

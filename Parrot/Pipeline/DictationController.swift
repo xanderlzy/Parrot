@@ -20,7 +20,7 @@ protocol Polishing: Sendable {
     func polish(_ raw: String) async -> PolishOutcome
 }
 
-protocol DictationSink: AnyObject {
+@MainActor protocol DictationSink: AnyObject {
     func record(raw: String, final: String, duration: TimeInterval, appName: String?)
 }
 
