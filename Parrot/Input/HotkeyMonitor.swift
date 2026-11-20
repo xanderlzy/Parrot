@@ -62,9 +62,20 @@ final class HotkeyMonitor {
             emit(machine.handle(down ? .down : .up, at: now))
         case .keyDown:
             guard machine.isActive else { return }
-            emit(machine.handle(keyCode == 53 ? .escape : .otherKey, at: now))
+            guard let event = Self.event(forKeyDown: keyCode) else { return }
+            emit(machine.handle(event, at: now))
         default:
             break
+        }
+    }
+
+    /// Escape cancels; the Globe key's own keyDown (179, posted on release) is part of the
+    /// trigger; any other key is a shortcut chord.
+    nonisolated static func event(forKeyDown keyCode: Int64) -> HotkeyEvent? {
+        switch keyCode {
+        case 53: .escape
+        case 179: nil
+        default: .otherKey
         }
     }
 

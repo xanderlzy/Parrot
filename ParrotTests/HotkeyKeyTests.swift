@@ -28,3 +28,14 @@ struct HotkeyKeyTests {
         #expect(HotkeyKey.rightControl.keyCode == 62)
     }
 }
+
+struct HotkeyKeyDownTests {
+    /// Releasing Globe/Fn also posts keyDown 179 (observed on hardware); it is part of the
+    /// trigger, not a shortcut, so it must not cancel a double-tap.
+    @Test func globeKeyDownIsNotAChord() {
+        #expect(HotkeyMonitor.event(forKeyDown: 179) == nil)
+        #expect(HotkeyMonitor.event(forKeyDown: 53) == .escape)
+        #expect(HotkeyMonitor.event(forKeyDown: 51) == .otherKey)   // Delete
+        #expect(HotkeyMonitor.event(forKeyDown: 123) == .otherKey)  // ←
+    }
+}
