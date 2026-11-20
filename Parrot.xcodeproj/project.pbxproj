@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A3F80772E737D5D97A03735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DED3BB0607C596D6ABF8138 /* Assets.xcassets */; };
+		2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF48AFCF5175FD1CD87C823 /* Theme.swift */; };
+		83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */; };
+		CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F83661A08B4B33B1F4139BCF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCEBF0A04B7C50F762127C7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E194284719FA718D210B51F;
+			remoteInfo = Parrot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2AA62BB3552276743C5C57CB /* Parrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DED3BB0607C596D6ABF8138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		5CF48AFCF5175FD1CD87C823 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		86EB00088EF3399CE7474B84 /* Parrot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Parrot.entitlements; sourceTree = "<group>"; };
+		8E2157D89DC48D0B8FFBBB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParrotApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0A2A53784379E840DD9D99E5 /* Parrot */ = {
+			isa = PBXGroup;
+			children = (
+				6E961D3A065C9D92A4E0F1D0 /* App */,
+				6B713EBFB980552C129298B7 /* Design */,
+				F685CAAE0CA635741C38CDD2 /* Resources */,
+			);
+			path = Parrot;
+			sourceTree = "<group>";
+		};
+		17F2469897ACC00E14F1F3A3 /* ParrotTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */,
+			);
+			path = ParrotTests;
+			sourceTree = "<group>";
+		};
+		523F1B653038F8179FAFFDCF = {
+			isa = PBXGroup;
+			children = (
+				0A2A53784379E840DD9D99E5 /* Parrot */,
+				17F2469897ACC00E14F1F3A3 /* ParrotTests */,
+				6C68E8299E2B92A3BDBE4098 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6B713EBFB980552C129298B7 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				5CF48AFCF5175FD1CD87C823 /* Theme.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		6C68E8299E2B92A3BDBE4098 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2AA62BB3552276743C5C57CB /* Parrot.app */,
+				9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E961D3A065C9D92A4E0F1D0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F685CAAE0CA635741C38CDD2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2DED3BB0607C596D6ABF8138 /* Assets.xcassets */,
+				8E2157D89DC48D0B8FFBBB79 /* Info.plist */,
+				86EB00088EF3399CE7474B84 /* Parrot.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E194284719FA718D210B51F /* Parrot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92990A79F9DA62584885312F /* Build configuration list for PBXNativeTarget "Parrot" */;
+			buildPhases = (
+				79849A64ECFE63BDFD4D5473 /* Sources */,
+				06AC530EE424FA0988E17434 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Parrot;
+			packageProductDependencies = (
+			);
+			productName = Parrot;
+			productReference = 2AA62BB3552276743C5C57CB /* Parrot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FEAC219F1FCB472208B70509 /* ParrotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 989CE469EFBB4F502DE97081 /* Build configuration list for PBXNativeTarget "ParrotTests" */;
+			buildPhases = (
+				872357AC498C684232681FA9 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				30B43131FA3DC36B42CF0E31 /* PBXTargetDependency */,
+			);
+			name = ParrotTests;
+			packageProductDependencies = (
+			);
+			productName = ParrotTests;
+			productReference = 9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FCEBF0A04B7C50F762127C7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					5E194284719FA718D210B51F = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+					FEAC219F1FCB472208B70509 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 29CF82032821332FBAF0EC2E /* Build configuration list for PBXProject "Parrot" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 523F1B653038F8179FAFFDCF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 6C68E8299E2B92A3BDBE4098 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E194284719FA718D210B51F /* Parrot */,
+				FEAC219F1FCB472208B70509 /* ParrotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06AC530EE424FA0988E17434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A3F80772E737D5D97A03735 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		79849A64ECFE63BDFD4D5473 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */,
+				2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		872357AC498C684232681FA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		30B43131FA3DC36B42CF0E31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E194284719FA718D210B51F /* Parrot */;
+			targetProxy = F83661A08B4B33B1F4139BCF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2273D8BD2ACF0437081571ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Parrot Self-Signed";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.app.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Parrot.app/Contents/MacOS/Parrot";
+			};
+			name = Release;
+		};
+		7F47FC278EA99E3A32D63DE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		95C481B324958ABE739DB0FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Parrot Self-Signed";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.app.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Parrot.app/Contents/MacOS/Parrot";
+			};
+			name = Debug;
+		};
+		9C01F4B62AABC31759979FAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		ABF8E4B7FF7F23EE0783ED88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Parrot/Resources/Parrot.entitlements;
+				CODE_SIGN_IDENTITY = "Parrot Self-Signed";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_DEBUG_DYLIB = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Parrot/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_CODE_SIGN_FLAGS = "--timestamp=none";
+				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.app;
+				PRODUCT_NAME = Parrot;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F15CB8A35F751CFC5A9BE741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Parrot/Resources/Parrot.entitlements;
+				CODE_SIGN_IDENTITY = "Parrot Self-Signed";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_DEBUG_DYLIB = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Parrot/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_CODE_SIGN_FLAGS = "--timestamp=none";
+				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.app;
+				PRODUCT_NAME = Parrot;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		29CF82032821332FBAF0EC2E /* Build configuration list for PBXProject "Parrot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C01F4B62AABC31759979FAC /* Debug */,
+				7F47FC278EA99E3A32D63DE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		92990A79F9DA62584885312F /* Build configuration list for PBXNativeTarget "Parrot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABF8E4B7FF7F23EE0783ED88 /* Debug */,
+				F15CB8A35F751CFC5A9BE741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		989CE469EFBB4F502DE97081 /* Build configuration list for PBXNativeTarget "ParrotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95C481B324958ABE739DB0FB /* Debug */,
+				2273D8BD2ACF0437081571ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FCEBF0A04B7C50F762127C7B /* Project object */;
+}
