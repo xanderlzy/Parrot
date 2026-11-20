@@ -22,6 +22,9 @@ final class AppEnvironment {
     let polishClient = SystemModelClient()
     let whisperModel = WhisperModelStore()
     private var whisper: WhisperTranscriber?
+    /// While set (onboarding practice), hotkey actions go here instead of starting dictation.
+    var hotkeyInterceptor: ((HotkeyAction) -> Void)?
+    var keyStateObserver: ((Bool) -> Void)?
     var polishAvailable: Bool { polishClient.isAvailable }
     private var trustPoll: Timer?
 
@@ -42,9 +45,12 @@ final class AppEnvironment {
             sounds: SystemSounds())
         audio.deviceUID = defaults.string(forKey: "inputDeviceUID")
         let controller = controller
-        hotkeys.onAction = { controller.enqueue($0) }
+        hotkeys.onAction = { action in
+            if let intercept = weakSelf?.hotkeyInterceptor { intercept(action) } else { controller.enqueue(action) }
+        }
+        hotkeys.onKeyState = { down in weakSelf?.keyStateObserver?(down) }
         weakSelf = self
-        window = MainWindowController { [unowned self] nav in AnyView(MainWindow(env: self, navigation: nav)) }
+        window = MainWindowController { [unowned self] nav in AnyView(RootView(env: self, navigation: nav)) }
         NotificationCenter.default.addObserver(forName: .parrotOpenSettings, object: nil, queue: .main) { _ in
             MainActor.assumeIsolated { AppEnvironment.shared.window.show(.settings) }
         }

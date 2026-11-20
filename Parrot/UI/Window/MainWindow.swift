@@ -58,6 +58,28 @@ final class MainWindowController: NSObject, NSWindowDelegate {
     }
 }
 
+/// Onboarding until it's finished, then the main window.
+struct RootView: View {
+    let env: AppEnvironment
+    let navigation: AppNavigation
+    @AppStorage("onboardingComplete") private var onboardingComplete = false
+
+    var body: some View {
+        ZStack {
+            if onboardingComplete {
+                MainWindow(env: env, navigation: navigation).transition(.opacity)
+            } else {
+                OnboardingView(env: env) {
+                    withAnimation(Motion.gentle) { onboardingComplete = true }
+                    navigation.tab = .home
+                    env.window.close()
+                }
+                .transition(.opacity)
+            }
+        }
+    }
+}
+
 /// Sidebar + content for Home / History / Settings.
 struct MainWindow: View {
     let env: AppEnvironment

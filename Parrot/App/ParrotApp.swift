@@ -26,8 +26,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         env.prepareSpeech()
         env.showPill()
         env.startPruning()
-        if !Permissions.accessibility { Permissions.promptAccessibility() }
         env.startHotkeys()
+        if !UserDefaults.standard.bool(forKey: "onboardingComplete") { env.window.show() }
         #if DEBUG
         // Development aid: `open Parrot.app --args -ParrotOpenTab settings`
         if let tab = UserDefaults.standard.string(forKey: "ParrotOpenTab").flatMap(MainTab.init(rawValue:)) {
