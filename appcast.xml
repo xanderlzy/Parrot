@@ -3,5 +3,14 @@
   <channel>
     <title>Parrot</title>
     <language>en</language>
+    <item>
+      <title>Parrot 0.1.0</title>
+      <pubDate>Fri, 20 Nov 2026 19:54:40 +0800</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>First release. Hold Fn to dictate, double-tap for hands-free. Everything runs on your Mac.</p>]]></description>
+      <enclosure url="https://github.com/xanderlzy/parrot/releases/download/v0.1.0/Parrot-0.1.0.zip" sparkle:edSignature="9bEtP+xdFK3ORZKo6njrj+bp04YENzduYmOSsmcw50u8mfJcaYiRh1i9BqUT+8wwCaIvzFNo40MDZ/LdhJvoBw==" length="1944078" type="application/octet-stream"/>
+    </item>
   </channel>
 </rss>
