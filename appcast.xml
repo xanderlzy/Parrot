@@ -4,6 +4,15 @@
     <title>Parrot</title>
     <language>en</language>
     <item>
+      <title>Parrot 0.1.1</title>
+      <pubDate>Fri, 20 Nov 2026 19:57:07 +0800</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<p>Maintenance update.</p>]]></description>
+      <enclosure url="https://github.com/xanderlzy/parrot/releases/download/v0.1.1/Parrot-0.1.1.zip" sparkle:edSignature="Qgkadzrof6F7bVrEB7ewCA7P3r/HC9CEZBtba70ycG+Mqv4LfgXMEjjaspel6JXik1E2NkUcc1+zoFJgSmtYBA==" length="1944079" type="application/octet-stream"/>
+    </item>
+    <item>
       <title>Parrot 0.1.0</title>
       <pubDate>Fri, 20 Nov 2026 19:54:40 +0800</pubDate>
       <sparkle:version>2</sparkle:version>
