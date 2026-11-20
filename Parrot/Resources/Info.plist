@@ -16,6 +16,10 @@
 	<key>LSUIElement</key><true/>
 	<key>NSMicrophoneUsageDescription</key><string>Parrot listens only while you hold the dictation key.</string>
 	<key>NSSpeechRecognitionUsageDescription</key><string>Parrot turns your speech into text on this Mac.</string>
+	<key>SUFeedURL</key><string>$(PARROT_FEED_URL)</string>
+	<key>SUPublicEDKey</key><string>R3zp+niEtWTJ0IRrQnyAq7I3uweKgrE6xRq5X49BZ10=</string>
+	<key>SUEnableAutomaticChecks</key><true/>
+	<key>SUScheduledCheckInterval</key><integer>86400</integer>
 	<key>NSHumanReadableCopyright</key><string>Made with care for friends.</string>
 </dict>
 </plist>

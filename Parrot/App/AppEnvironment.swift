@@ -17,8 +17,8 @@ final class AppEnvironment {
     private var pruneTimer: Timer?
     private(set) var pill: PillPresenter?
     private(set) var window: MainWindowController!
-    /// Set once Sparkle is wired up (Task 14).
-    var updater: Updater?
+    /// Nil inside unit tests, where Sparkle shouldn't run.
+    let updater: Updater? = NSClassFromString("XCTestCase") == nil ? Updater() : nil
     let polishClient = SystemModelClient()
     let whisperModel = WhisperModelStore()
     private var whisper: WhisperTranscriber?

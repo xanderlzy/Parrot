@@ -61,6 +61,7 @@
 		D1F09D479ED41C5E3E13C05F /* TextInserterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8939060B5C3FA7D8B4EC4 /* TextInserterTests.swift */; };
 		D21E07B011325C78BA2140D3 /* StatsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E77F697D84AC840CC9D093B /* StatsStoreTests.swift */; };
 		D5D57F3B1C72545BE9AB7EDC /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54975D9CFEAF45A9955E7F05 /* HistoryView.swift */; };
+		E13FE9BAA4062AF67B22D528 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 8AEB81DFD69FDFB417908498 /* Sparkle */; };
 		E3F64FC26CFB13D0A8F0EE14 /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0B438750BCCD12502A5BAA43 /* WhisperKit */; };
 		E64072F13FB056F47F65AE23 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4131927CF2CFE53464D67B8 /* SettingsView.swift */; };
 		E6E3E287A0EAC8FE44E7AB8F /* AccessibilityStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5C77F4A731CE7A328CD122 /* AccessibilityStep.swift */; };
@@ -157,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F64FC26CFB13D0A8F0EE14 /* WhisperKit in Frameworks */,
+				E13FE9BAA4062AF67B22D528 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +423,7 @@
 			name = Parrot;
 			packageProductDependencies = (
 				0B438750BCCD12502A5BAA43 /* WhisperKit */,
+				8AEB81DFD69FDFB417908498 /* Sparkle */,
 			);
 			productName = Parrot;
 			productReference = 2AA62BB3552276743C5C57CB /* Parrot.app */;
@@ -473,6 +476,7 @@
 			mainGroup = 523F1B653038F8179FAFFDCF;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				8586501F63B3A265D294359E /* XCRemoteSwiftPackageReference "Sparkle" */,
 				12B2E6B498A39A1674454FD6 /* XCRemoteSwiftPackageReference "WhisperKit" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -656,6 +660,7 @@
 				MARKETING_VERSION = 0.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PARROT_FEED_URL = "https://github.com/xanderlzy/parrot/releases/latest/download/appcast.xml";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -743,6 +748,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PARROT_FEED_URL = "https://github.com/xanderlzy/parrot/releases/latest/download/appcast.xml";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -786,7 +792,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_DEBUG_DYLIB = NO;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = Parrot/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -840,6 +846,14 @@
 				minimumVersion = 1.1.1;
 			};
 		};
+		8586501F63B3A265D294359E /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.10.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -847,6 +861,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 12B2E6B498A39A1674454FD6 /* XCRemoteSwiftPackageReference "WhisperKit" */;
 			productName = WhisperKit;
+		};
+		8AEB81DFD69FDFB417908498 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8586501F63B3A265D294359E /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
