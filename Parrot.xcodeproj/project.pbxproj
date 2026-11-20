@@ -21,7 +21,9 @@
 		B8E9EA5B43204C318777E293 /* HotkeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3250393D311725BA41E6476 /* HotkeyMonitor.swift */; };
 		CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */; };
 		CC2CDDAA5887320AA232156B /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32748C0A6076C524890C15C2 /* Transcriber.swift */; };
+		D1F09D479ED41C5E3E13C05F /* TextInserterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8939060B5C3FA7D8B4EC4 /* TextInserterTests.swift */; };
 		EA6EF9A7FAECE2920C10CA0C /* AppleTranscriberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6D02FD953B2350B3FBF259 /* AppleTranscriberTests.swift */; };
+		EB4B3C7E6C802D6946C5F612 /* TextInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629942A1A276322CAA6C79F /* TextInserter.swift */; };
 		FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,7 @@
 		2AA62BB3552276743C5C57CB /* Parrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DED3BB0607C596D6ABF8138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32748C0A6076C524890C15C2 /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
+		3629942A1A276322CAA6C79F /* TextInserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInserter.swift; sourceTree = "<group>"; };
 		3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		47444EE4AFB450273388CBB7 /* AppleTranscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTranscriber.swift; sourceTree = "<group>"; };
 		4ACF501DBA13EF9AB8329B7A /* AudioCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCapture.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		A3250393D311725BA41E6476 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
 		A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParrotApp.swift; sourceTree = "<group>"; };
 		AB6D02FD953B2350B3FBF259 /* AppleTranscriberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTranscriberTests.swift; sourceTree = "<group>"; };
+		E0E8939060B5C3FA7D8B4EC4 /* TextInserterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInserterTests.swift; sourceTree = "<group>"; };
 		ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyKeyTests.swift; sourceTree = "<group>"; };
 		F1FB66E768F48A7A8B6FDB18 /* LevelMeterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMeterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +78,7 @@
 				B18DEB99FBDDDD742983E524 /* Audio */,
 				6B713EBFB980552C129298B7 /* Design */,
 				3854C926667CAE579EB8624E /* Input */,
+				DACA77841D917E0D89EEFB15 /* Output */,
 				F685CAAE0CA635741C38CDD2 /* Resources */,
 				00FC09AC302D0F56245FB01F /* Support */,
 				1A94350ADBD3020641B26111 /* Transcription */,
@@ -89,6 +94,7 @@
 				1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */,
 				F1FB66E768F48A7A8B6FDB18 /* LevelMeterTests.swift */,
 				3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */,
+				E0E8939060B5C3FA7D8B4EC4 /* TextInserterTests.swift */,
 			);
 			path = ParrotTests;
 			sourceTree = "<group>";
@@ -153,6 +159,14 @@
 				2699861C2CB0D7B9F68EAE41 /* LevelMeter.swift */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		DACA77841D917E0D89EEFB15 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				3629942A1A276322CAA6C79F /* TextInserter.swift */,
+			);
+			path = Output;
 			sourceTree = "<group>";
 		};
 		F685CAAE0CA635741C38CDD2 /* Resources */ = {
@@ -267,6 +281,7 @@
 				758F44E0DB54B64F7F8F93F5 /* LevelMeter.swift in Sources */,
 				83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */,
 				9E695D44C207DBC20FB6F972 /* Permissions.swift in Sources */,
+				EB4B3C7E6C802D6946C5F612 /* TextInserter.swift in Sources */,
 				2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */,
 				CC2CDDAA5887320AA232156B /* Transcriber.swift in Sources */,
 			);
@@ -281,6 +296,7 @@
 				FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */,
 				023545A1E5830655EA9FE9DD /* LevelMeterTests.swift in Sources */,
 				CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */,
+				D1F09D479ED41C5E3E13C05F /* TextInserterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
