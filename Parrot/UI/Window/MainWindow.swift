@@ -26,6 +26,7 @@ final class MainWindowController: NSObject, NSWindowDelegate {
 
     var isVisible: Bool { window?.isVisible ?? false }
     var windowFrame: NSRect? { window?.frame }
+    var styleMask: NSWindow.StyleMask? { window?.styleMask }
 
     func show(_ tab: MainTab? = nil) {
         if let tab { navigation.tab = tab }
@@ -40,13 +41,12 @@ final class MainWindowController: NSObject, NSWindowDelegate {
 
     private func build() -> NSWindow {
         let w = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 800, height: 560),
-                         styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
+                         styleMask: [.titled, .closable, .miniaturizable, .fullSizeContentView],
                          backing: .buffered, defer: false)
         w.titlebarAppearsTransparent = true
         w.titleVisibility = .hidden
         w.isMovableByWindowBackground = true
         w.isReleasedWhenClosed = false
-        w.minSize = NSSize(width: 720, height: 520)
         w.title = "Parrot"
         let host = NSHostingView(rootView: makeContent(navigation))
         // The window owns its size. Left on, SwiftUI resizes it to the content's ideal size,

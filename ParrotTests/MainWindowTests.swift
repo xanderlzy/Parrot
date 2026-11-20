@@ -33,4 +33,14 @@ struct MainWindowTests {
         c.close()
         #expect(frame.height <= 700, "window height \(frame.height)")
     }
+
+    @Test func windowIsFixedSize() async throws {
+        let c = MainWindowController { _ in AnyView(Color.clear) }
+        c.show()
+        let mask = try #require(c.styleMask)
+        let frame = try #require(c.windowFrame)
+        c.close()
+        #expect(!mask.contains(.resizable))
+        #expect(frame.size.height >= 560 && frame.size.width == 800)
+    }
 }

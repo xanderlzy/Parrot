@@ -11,16 +11,34 @@ struct OnboardingView: View {
         self.env = env
         self.done = done
         let key = HotkeyKey(rawValue: UserDefaults.standard.string(forKey: "hotkey") ?? "") ?? .fn
-        _flow = State(initialValue: OnboardingFlow(hotkey: key))
+        var flow = OnboardingFlow(hotkey: key)
+        #if DEBUG
+        // Development aid: `open Parrot.app --args -onboardingComplete NO -ParrotOnboardingStep 5`
+        for _ in 0..<UserDefaults.standard.integer(forKey: "ParrotOnboardingStep") { flow.next() }
+        #endif
+        _flow = State(initialValue: flow)
     }
 
     private var key: HotkeyKey { HotkeyKey(rawValue: hotkey) ?? .fn }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            HStack {
+            HStack(spacing: 18) {
                 ParrotMark()
                 Spacer()
+                if flow.canGoBack && !flow.isLast {
+                    Button { withAnimation(Motion.fluid) { flow.back() } } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left").font(.system(size: 10, weight: .semibold))
+                            Text("Back")
+                        }
+                        .font(Theme.Font.caption).foregroundStyle(Theme.fg(0.5))
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(PressScale())
+                    .keyboardShortcut(.leftArrow, modifiers: .command)
+                    .transition(.opacity)
+                }
                 ProgressDots(count: flow.count, index: flow.index)
             }
             .padding(.bottom, 48)
@@ -33,12 +51,6 @@ struct OnboardingView: View {
                         removal: .offset(x: flow.forward ? -40 : 40).combined(with: .opacity)))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-
-            if flow.canGoBack && !flow.isLast {
-                Button("Back") { withAnimation(Motion.fluid) { flow.back() } }
-                    .buttonStyle(.plain)
-                    .font(Theme.Font.caption).foregroundStyle(Theme.fg(0.45))
-            }
         }
         .padding(.top, 56).padding(.horizontal, 64).padding(.bottom, 32)
         .foregroundStyle(Theme.fg())
