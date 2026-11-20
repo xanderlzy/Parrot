@@ -16,6 +16,11 @@ final class AppEnvironment {
     let history: HistoryStore
     private var pruneTimer: Timer?
     private(set) var pill: PillPresenter?
+    private(set) var window: MainWindowController!
+    /// Set once Sparkle is wired up (Task 14).
+    var updater: Updater?
+    let polishClient = SystemModelClient()
+    var polishAvailable: Bool { polishClient.isAvailable }
     private var trustPoll: Timer?
 
     private init() {
@@ -28,13 +33,21 @@ final class AppEnvironment {
         controller = DictationController(
             audio: audio,
             transcriber: { apple },
-            polisher: FoundationPolisher(client: SystemModelClient()),
+            polisher: FoundationPolisher(client: polishClient),
             inserter: inserter,
             sink: history,
             sounds: SystemSounds())
         audio.deviceUID = defaults.string(forKey: "inputDeviceUID")
         let controller = controller
         hotkeys.onAction = { controller.enqueue($0) }
+        window = MainWindowController { [unowned self] nav in AnyView(MainWindow(env: self, navigation: nav)) }
+        NotificationCenter.default.addObserver(forName: .parrotOpenSettings, object: nil, queue: .main) { _ in
+            MainActor.assumeIsolated { AppEnvironment.shared.window.show(.settings) }
+        }
+    }
+
+    func setHotkey(_ key: HotkeyKey) {
+        hotkeys.key = key
     }
 
     /// Applies the retention setting now and once a day.

@@ -6,6 +6,11 @@ struct ParrotApp: App {
 
     var body: some Scene {
         MenuBarExtra("Parrot", systemImage: "waveform") {
+            Button("Open Parrot…") { AppEnvironment.shared.window.show() }
+            Divider()
+            Button("Check for Updates…") { AppEnvironment.shared.updater?.checkForUpdates() }
+                .disabled(AppEnvironment.shared.updater == nil)
+            Divider()
             Button("Quit Parrot") { NSApp.terminate(nil) }
                 .keyboardShortcut("q")
         }
@@ -23,5 +28,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         env.startPruning()
         if !Permissions.accessibility { Permissions.promptAccessibility() }
         env.startHotkeys()
+        #if DEBUG
+        // Development aid: `open Parrot.app --args -ParrotOpenTab settings`
+        if let tab = UserDefaults.standard.string(forKey: "ParrotOpenTab").flatMap(MainTab.init(rawValue:)) {
+            env.window.show(tab)
+        }
+        #endif
     }
 }

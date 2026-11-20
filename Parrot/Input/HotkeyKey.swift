@@ -18,7 +18,7 @@ enum HotkeyKey: String, CaseIterable, Identifiable, Sendable {
 
     var displayName: String {
         switch self {
-        case .fn: "Fn (🌐)"
+        case .fn: "Fn / Globe"
         case .rightOption: "Right ⌥ Option"
         case .rightCommand: "Right ⌘ Command"
         case .rightControl: "Right ⌃ Control"
