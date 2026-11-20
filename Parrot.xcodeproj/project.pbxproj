@@ -54,6 +54,7 @@
 		B05615BB528CFED290B79410 /* DictationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B79A5B7CE96428450324ACB /* DictationControllerTests.swift */; };
 		B7420A37E8506F2B26702958 /* SpeechModelStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FD1E50C343DB717258309 /* SpeechModelStep.swift */; };
 		B8E9EA5B43204C318777E293 /* HotkeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3250393D311725BA41E6476 /* HotkeyMonitor.swift */; };
+		BD4E9274F941F5FCCC861209 /* AudioCaptureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3080471994E7C9E13ACC1D /* AudioCaptureTests.swift */; };
 		C674376E4CEF80F50CF79D92 /* Polisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4C3F1849419C873E9254C /* Polisher.swift */; };
 		CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */; };
 		CC2CDDAA5887320AA232156B /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32748C0A6076C524890C15C2 /* Transcriber.swift */; };
@@ -99,6 +100,7 @@
 		2699861C2CB0D7B9F68EAE41 /* LevelMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMeter.swift; sourceTree = "<group>"; };
 		2894B021C4FE521D40862B29 /* MicrophoneStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneStep.swift; sourceTree = "<group>"; };
 		2AA62BB3552276743C5C57CB /* Parrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3080471994E7C9E13ACC1D /* AudioCaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCaptureTests.swift; sourceTree = "<group>"; };
 		2DED3BB0607C596D6ABF8138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FD65055B1C4E78E0C1C3361 /* stop.caf */ = {isa = PBXFileReference; path = stop.caf; sourceTree = "<group>"; };
 		32748C0A6076C524890C15C2 /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6D02FD953B2350B3FBF259 /* AppleTranscriberTests.swift */,
+				2C3080471994E7C9E13ACC1D /* AudioCaptureTests.swift */,
 				4B79A5B7CE96428450324ACB /* DictationControllerTests.swift */,
 				8BD7BB4DCA62C2FEEF11B64F /* FormattingTests.swift */,
 				ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */,
@@ -559,6 +562,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6EF9A7FAECE2920C10CA0C /* AppleTranscriberTests.swift in Sources */,
+				BD4E9274F941F5FCCC861209 /* AudioCaptureTests.swift in Sources */,
 				B05615BB528CFED290B79410 /* DictationControllerTests.swift in Sources */,
 				EC5D4BA8AFBE1081726BA107 /* FormattingTests.swift in Sources */,
 				870AA2D42197EA20D90AA3FA /* HotkeyKeyTests.swift in Sources */,

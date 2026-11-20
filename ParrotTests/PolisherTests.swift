@@ -48,4 +48,20 @@ struct PolisherTests {
         #expect(out.text == "keep me")
         #expect(out.usedModel)
     }
+
+    @Test func totalBudgetPassesRemainingChunksThroughRaw() async {
+        final class Counter: @unchecked Sendable { var n = 0 }
+        let calls = Counter()
+        let model = FakeModel(delay: .milliseconds(200)) { prompt in
+            calls.n += 1
+            return prompt.replacingOccurrences(of: "Dictated text:\n", with: "")
+        }
+        let p = FoundationPolisher(client: model, timeout: .seconds(5), totalBudget: .milliseconds(300))
+        let raw = (0..<3).map { _ in Array(repeating: "word", count: 240).joined(separator: " ") + "." }.joined(separator: " ")
+        let start = ContinuousClock.now
+        let out = await p.polish(raw)
+        #expect(calls.n < 3)
+        #expect(out.text.split(separator: " ").count == 720)
+        #expect(ContinuousClock.now - start < .seconds(1))
+    }
 }

@@ -61,9 +61,8 @@ final class HotkeyMonitor {
             onKeyState(down)
             emit(machine.handle(down ? .down : .up, at: now))
         case .keyDown:
-            if keyCode == 53, machine.isActive {
-                emit(machine.handle(.escape, at: now))
-            }
+            guard machine.isActive else { return }
+            emit(machine.handle(keyCode == 53 ? .escape : .otherKey, at: now))
         default:
             break
         }

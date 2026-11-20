@@ -29,11 +29,15 @@ struct FoundationPolisher: Polishing {
     let timeout: Duration
     /// Extra time allowed per word, since generation time grows with length.
     let perWord: Duration
+    /// Cap on total polish time for one dictation; chunks after it pass through raw.
+    let totalBudget: Duration
 
-    init(client: LanguageModelClient, timeout: Duration = .seconds(3), perWord: Duration = .milliseconds(40)) {
+    init(client: LanguageModelClient, timeout: Duration = .seconds(3), perWord: Duration = .milliseconds(40),
+         totalBudget: Duration = .seconds(15)) {
         self.client = client
         self.timeout = timeout
         self.perWord = perWord
+        self.totalBudget = totalBudget
     }
 
     func polish(_ raw: String) async -> PolishOutcome {
@@ -42,9 +46,12 @@ struct FoundationPolisher: Polishing {
         }
         var pieces: [String] = []
         var usedModel = false
+        let deadline = ContinuousClock.now + totalBudget
         for chunk in PolishGuard.chunks(raw) {
+            let remaining = deadline - ContinuousClock.now
+            guard remaining > .zero else { pieces.append(chunk); continue }
             let words = chunk.split(whereSeparator: \.isWhitespace).count
-            let limit = timeout + perWord * words
+            let limit = min(timeout + perWord * words, remaining)
             let client = client
             let reply = await withTimeout(limit) {
                 try await client.respond(instructions: Self.instructions, prompt: "Dictated text:\n\(chunk)")

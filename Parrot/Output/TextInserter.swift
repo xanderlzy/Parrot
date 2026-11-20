@@ -42,7 +42,7 @@ final class TextInserter {
     init(pasteboard: NSPasteboard = .general,
          canPaste: @escaping () -> Bool = TextInserter.defaultCanPaste,
          postPaste: @escaping () -> Void = TextInserter.postCommandV,
-         restoreDelay: Duration = .milliseconds(250)) {
+         restoreDelay: Duration = TextInserter.defaultRestoreDelay) {
         self.pasteboard = pasteboard
         self.canPaste = canPaste
         self.postPaste = postPaste
@@ -50,11 +50,7 @@ final class TextInserter {
     }
 
     func insert(_ text: String) async -> InsertResult {
-        guard canPaste() else {
-            pasteboard.clearContents()
-            pasteboard.setString(text, forType: .string)
-            return .copiedOnly
-        }
+        guard canPaste() else { copy(text); return .copiedOnly }
         let snapshot = PasteboardSnapshot.capture(pasteboard)
         pasteboard.clearContents()
         let item = NSPasteboardItem()
@@ -69,8 +65,31 @@ final class TextInserter {
         return .pasted
     }
 
+    /// Slow apps (Electron, busy browsers) read the clipboard well after ⌘V is posted.
+    nonisolated static let defaultRestoreDelay: Duration = .milliseconds(600)
+
+    /// Leaves the text on the clipboard for the user to paste themselves.
+    func copy(_ text: String) {
+        pasteboard.clearContents()
+        pasteboard.setString(text, forType: .string)
+    }
+
+    nonisolated static func canPaste(trusted: Bool, secureInput: Bool, hasFocusedElement: Bool) -> Bool {
+        trusted && !secureInput && hasFocusedElement
+    }
+
     nonisolated static func defaultCanPaste() -> Bool {
-        AXIsProcessTrusted() && !IsSecureEventInputEnabled()
+        canPaste(trusted: AXIsProcessTrusted(), secureInput: IsSecureEventInputEnabled(),
+                 hasFocusedElement: hasFocusedElement())
+    }
+
+    /// False only when Accessibility positively reports nothing focused. Other errors
+    /// (apps that don't answer) count as focused, so they still get a paste.
+    nonisolated static func hasFocusedElement() -> Bool {
+        var value: CFTypeRef?
+        let err = AXUIElementCopyAttributeValue(AXUIElementCreateSystemWide(),
+                                                kAXFocusedUIElementAttribute as CFString, &value)
+        return err != .noValue
     }
 
     nonisolated static func postCommandV() {

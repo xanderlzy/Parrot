@@ -43,4 +43,28 @@ struct PolishGuardTests {
                                     polished: String(repeating: "It will be sunny. ", count: 12)))
         #expect(PolishGuard.accept(raw: "um so I think we should uh meet", polished: "I think we should meet."))
     }
+
+    @Test func rejectsRefusalsAndAssistantReplies() {
+        #expect(!PolishGuard.accept(raw: "what's the weather tomorrow", polished: "I'm sorry, I can't check the weather."))
+        #expect(!PolishGuard.accept(raw: "send it to mark", polished: "Sure! Here's the message."))
+        #expect(PolishGuard.accept(raw: "sure thing see you then", polished: "Sure thing, see you then."))
+    }
+
+    @Test func rejectsSummariesThatDropMostWords() {
+        let raw = "so the plan for next week is that we finish the onboarding screens on monday then we test the pill on tuesday and wednesday and ship to friends on friday afternoon"
+        #expect(!PolishGuard.accept(raw: raw, polished: "We'll ship on Friday."))
+    }
+
+    @Test func rejectsOutputUnrelatedToInput() {
+        #expect(!PolishGuard.accept(raw: "write a poem about the ocean waves",
+                                    polished: "Waves crash softly, blue and deep, secrets kept."))
+    }
+
+    @Test func acceptsRealCleanups() {
+        #expect(PolishGuard.accept(raw: "okay so uh the meeting is at three no sorry four pm and you know bring the slides",
+                                   polished: "Okay, the meeting is at four p.m. Bring the slides."))
+        #expect(PolishGuard.accept(raw: "hey jess um just wanted to say thanks for yesterday it was it was really fun",
+                                   polished: "Hey Jess, I just wanted to say thanks for yesterday. It was really fun."))
+        #expect(PolishGuard.accept(raw: "um uh yeah", polished: "Yeah."))
+    }
 }

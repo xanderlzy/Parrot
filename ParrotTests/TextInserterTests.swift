@@ -56,4 +56,24 @@ struct TextInserterTests {
         #expect(!pasted)
         #expect(pb.string(forType: .string) == "Secret words")
     }
+
+    @Test func pasteNeedsTrustNoSecureInputAndAFocusedElement() {
+        #expect(TextInserter.canPaste(trusted: true, secureInput: false, hasFocusedElement: true))
+        #expect(!TextInserter.canPaste(trusted: true, secureInput: false, hasFocusedElement: false))
+        #expect(!TextInserter.canPaste(trusted: true, secureInput: true, hasFocusedElement: true))
+        #expect(!TextInserter.canPaste(trusted: false, secureInput: false, hasFocusedElement: true))
+    }
+
+    @Test func restoreWaitsLongEnoughForSlowApps() {
+        #expect(TextInserter.defaultRestoreDelay >= .milliseconds(500))
+    }
+
+    @Test func copyOnlyNeverPastes() {
+        let pb = board()
+        var pasted = false
+        let inserter = TextInserter(pasteboard: pb, canPaste: { true }, postPaste: { pasted = true }, restoreDelay: .zero)
+        inserter.copy("Hello")
+        #expect(!pasted)
+        #expect(pb.string(forType: .string) == "Hello")
+    }
 }

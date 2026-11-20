@@ -67,4 +67,30 @@ struct HotkeyStateMachineTests {
         #expect(m.handle(.down, at: 0.5) == [])
         #expect(m.handle(.up, at: 1) == [.commit])
     }
+
+    @Test func otherKeyWhileHoldingCancelsQuietly() {
+        var m = HotkeyStateMachine()
+        #expect(m.handle(.down, at: 0) == [.start])
+        #expect(m.handle(.otherKey, at: 0.05) == [.cancel])     // e.g. Fn+Delete
+        #expect(m.handle(.otherKey, at: 0.1) == [])
+        #expect(m.handle(.up, at: 0.6) == [])
+        #expect(!m.isActive)
+        #expect(m.handle(.down, at: 1) == [.start])
+    }
+
+    @Test func otherKeyDuringPendingTapCancels() {
+        var m = HotkeyStateMachine()
+        _ = m.handle(.down, at: 0); _ = m.handle(.up, at: 0.1)
+        #expect(m.handle(.otherKey, at: 0.15) == [.cancel])
+        #expect(m.tick(now: 1) == [])
+        #expect(!m.isActive)
+    }
+
+    @Test func typingWhileLockedKeepsListening() {
+        var m = HotkeyStateMachine()
+        _ = m.handle(.down, at: 0); _ = m.handle(.up, at: 0.1)
+        _ = m.handle(.down, at: 0.2); _ = m.handle(.up, at: 0.3)
+        #expect(m.handle(.otherKey, at: 1) == [])
+        #expect(m.isActive)
+    }
 }

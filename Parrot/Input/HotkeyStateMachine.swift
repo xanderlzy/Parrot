@@ -1,6 +1,6 @@
 import Foundation
 
-enum HotkeyEvent { case down, up, escape }
+enum HotkeyEvent { case down, up, escape, otherKey }
 enum HotkeyAction: Equatable, Sendable { case start, lock, commit, cancel }
 
 /// Pure model of the dictation key.
@@ -8,6 +8,8 @@ enum HotkeyAction: Equatable, Sendable { case start, lock, commit, cancel }
 /// - Quick tap then press again within `doubleTapWindow`: `start` … `lock` (hands-free);
 ///   the next press `commit`s.
 /// - A lone quick tap expires into `cancel`. Escape cancels any active session.
+/// - Another key pressed while the hotkey is held (Fn+Delete, Fn+→, right-⌘+C) is a
+///   shortcut, not dictation: `cancel` quietly. Typing while locked hands-free is fine.
 struct HotkeyStateMachine {
     var tapMaxDuration: TimeInterval = 0.25
     var doubleTapWindow: TimeInterval = 0.30
@@ -40,12 +42,13 @@ struct HotkeyStateMachine {
                 state = .pendingTap(until: t + doubleTapWindow); return []
             }
             state = .idle; return [.commit]
-        case (.holding, .escape), (.lockedAwaitingUp, .escape):
+        case (.holding, .escape), (.lockedAwaitingUp, .escape),
+             (.holding, .otherKey), (.lockedAwaitingUp, .otherKey):
             state = .ignoringUp; return [.cancel]
         case (.pendingTap(let until), .down):
             if t <= until { state = .lockedAwaitingUp; return [.lock] }
             state = .holding(since: t); return [.cancel, .start]
-        case (.pendingTap, .escape), (.locked, .escape):
+        case (.pendingTap, .escape), (.locked, .escape), (.pendingTap, .otherKey):
             state = .idle; return [.cancel]
         case (.lockedAwaitingUp, .up):
             state = .locked; return []

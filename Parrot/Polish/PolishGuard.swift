@@ -41,9 +41,36 @@ enum PolishGuard {
         return result
     }
 
+    /// Openings that mean the model replied to the text instead of cleaning it.
+    static let assistantOpenings: [[String]] = [
+        ["im", "sorry"], ["i", "cant"], ["i", "cannot"], ["sorry"], ["sure"], ["certainly"],
+        ["as", "an", "ai"], ["here", "is"], ["heres"],
+    ]
+
     static func accept(raw: String, polished: String) -> Bool {
         let trimmed = polished.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return false }
-        return trimmed.count <= Int(Double(raw.count) * 1.3) + 20
+        guard !trimmed.isEmpty, trimmed.count <= Int(Double(raw.count) * 1.3) + 20 else { return false }
+        let inWords = words(raw), outWords = words(trimmed)
+        // A reply, not a cleanup — unless the speaker actually started that way.
+        for opening in assistantOpenings where outWords.starts(with: opening) && !inWords.starts(with: opening) {
+            return false
+        }
+        // Cleanup drops fillers and repeats, not most of what was said.
+        if inWords.count >= 8, Double(outWords.count) < Double(inWords.count) * 0.4 { return false }
+        // Cleanup reuses the speaker's words.
+        if outWords.count >= 4 {
+            let vocabulary = Set(inWords)
+            let reused = outWords.filter(vocabulary.contains).count
+            if Double(reused) < Double(outWords.count) * 0.6 { return false }
+        }
+        return true
+    }
+
+    /// Lowercased words with punctuation and apostrophes removed.
+    static func words(_ s: String) -> [String] {
+        s.lowercased()
+            .replacingOccurrences(of: "'", with: "").replacingOccurrences(of: "’", with: "")
+            .split { !$0.isLetter && !$0.isNumber }
+            .map(String.init)
     }
 }

@@ -49,7 +49,14 @@ final class DictationController {
     @ObservationIgnored private let sink: DictationSink
     @ObservationIgnored private let sounds: SoundPlaying
     @ObservationIgnored private let frontmostAppName: () -> String?
+    @ObservationIgnored private let frontmostPID: () -> Int32?
     @ObservationIgnored private let ensureMicrophone: () async -> Bool
+    /// Start cue waits this long, so a shortcut (Fn+Delete) cancels before anything shows.
+    @ObservationIgnored private let uiDelay: Duration
+    /// A transcriber that hasn't answered by then (plus half the recording length) is abandoned.
+    @ObservationIgnored private let finishTimeout: Duration
+    /// Less voiced audio than this is treated as silence (engines hallucinate on silence).
+    static let minimumVoicedSeconds = 0.15
 
     private struct Session {
         let id = UUID()
@@ -64,7 +71,9 @@ final class DictationController {
     init(audio: AudioSource, transcriber: @escaping () -> Transcriber, polisher: Polishing,
          inserter: TextInserter, sink: DictationSink, sounds: SoundPlaying,
          frontmostAppName: @escaping () -> String? = { NSWorkspace.shared.frontmostApplication?.localizedName },
-         ensureMicrophone: @escaping () async -> Bool = DictationController.defaultEnsureMicrophone) {
+         frontmostPID: @escaping () -> Int32? = { NSWorkspace.shared.frontmostApplication?.processIdentifier },
+         ensureMicrophone: @escaping () async -> Bool = DictationController.defaultEnsureMicrophone,
+         uiDelay: Duration = .milliseconds(120), finishTimeout: Duration = .seconds(10)) {
         self.audio = audio
         self.makeTranscriber = transcriber
         self.polisher = polisher
@@ -72,7 +81,10 @@ final class DictationController {
         self.sink = sink
         self.sounds = sounds
         self.frontmostAppName = frontmostAppName
+        self.frontmostPID = frontmostPID
         self.ensureMicrophone = ensureMicrophone
+        self.uiDelay = uiDelay
+        self.finishTimeout = finishTimeout
         let levels = audio.levels
         Task { [weak self] in
             for await value in levels { self?.level = value }
@@ -111,8 +123,15 @@ final class DictationController {
         let s = Session(transcriber: transcriber, appName: frontmostAppName(), feed: feed)
         session = s
         messageTask?.cancel()
-        sounds.play(.start)
-        pill = .listening(locked: false)
+        if uiDelay == .zero {
+            showListening()
+        } else {
+            Task { [weak self, uiDelay] in
+                try? await Task.sleep(for: uiDelay)
+                guard let self, self.session?.id == s.id else { return }
+                self.showListening()
+            }
+        }
         do {
             // Capture immediately so the first word isn't lost while the engine spins up.
             try audio.start { buffer in feed.push(buffer) }
@@ -128,18 +147,39 @@ final class DictationController {
         }
     }
 
+    private func showListening() {
+        sounds.play(.start)
+        if case .listening = pill { return }   // already locked hands-free
+        pill = .listening(locked: false)
+    }
+
     private func commit() async {
         guard let s = session else { return }
         session = nil
+        let target = frontmostPID()
         let duration = audio.stop()
         sounds.play(.stop)
         pill = .polishing
-        let raw = ((try? await s.transcriber.finish()) ?? "")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        guard s.feed.voicedSeconds >= Self.minimumVoicedSeconds else {
+            await s.transcriber.cancel()
+            show(Self.emptyMessage); return
+        }
+        let transcriber = s.transcriber
+        // Long hands-free takes need longer to finalize (Whisper decodes the whole take at the end).
+        let limit = finishTimeout + .seconds(duration * 0.5)
+        let finished = await withTimeout(limit) { try await transcriber.finish() }
+        if finished == nil { await transcriber.cancel() }
+        let raw = (finished ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !raw.isEmpty else { show(Self.emptyMessage); return }
         let outcome = await polisher.polish(raw)
         aiUnavailableNudge = outcome.modelUnavailable
-        let result = await inserter.insert(outcome.text)
+        // If the user switched apps while we were working, don't paste into the wrong one.
+        let result: InsertResult
+        if frontmostPID() == target {
+            result = await inserter.insert(outcome.text)
+        } else {
+            inserter.copy(outcome.text); result = .copiedOnly
+        }
         sink.record(raw: raw, final: outcome.text, duration: duration, appName: s.appName)
         if result == .copiedOnly { show(Self.copiedMessage) } else { pill = .hidden }
     }
@@ -175,11 +215,22 @@ final class DictationController {
 
 /// Holds microphone buffers until the transcriber is ready, then streams straight through.
 final class BufferFeed: @unchecked Sendable {
-    private struct State { var backlog: [AVAudioPCMBuffer] = []; var target: Transcriber? }
+    private struct State { var backlog: [AVAudioPCMBuffer] = []; var target: Transcriber?; var voiced = 0.0 }
     private let lock = OSAllocatedUnfairLock(uncheckedState: State())
+    /// Level (0…1, see LevelMeter) above which a buffer counts as voice: about −40 dBFS.
+    static let voiceLevel: Float = 0.2
+
+    /// Seconds of audio loud enough to be speech.
+    var voicedSeconds: Double { lock.withLockUnchecked { $0.voiced } }
 
     func push(_ buffer: AVAudioPCMBuffer) {
+        var voiced = 0.0
+        if let data = buffer.floatChannelData, buffer.format.sampleRate > 0,
+           LevelMeter.level(samples: UnsafeBufferPointer(start: data[0], count: Int(buffer.frameLength))) > Self.voiceLevel {
+            voiced = Double(buffer.frameLength) / buffer.format.sampleRate
+        }
         lock.withLockUnchecked { state in
+            state.voiced += voiced
             if let target = state.target { target.append(buffer) } else { state.backlog.append(buffer) }
         }
     }

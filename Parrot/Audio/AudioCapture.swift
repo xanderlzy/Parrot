@@ -1,6 +1,8 @@
 import AVFoundation
 import CoreAudio
 
+enum AudioCaptureError: Error { case noInput }
+
 struct AudioInputDevice: Identifiable, Hashable, Sendable {
     let id: AudioDeviceID
     let uid: String
@@ -32,6 +34,10 @@ final class AudioCapture: @unchecked Sendable {
                                  &id, UInt32(MemoryLayout<AudioDeviceID>.size))
         }
         let format = input.outputFormat(forBus: 0)
+        // No microphone (or one that vanished) reports 0 Hz / 0 channels; installTap would crash.
+        guard Self.isUsable(sampleRate: format.sampleRate, channels: format.channelCount) else {
+            throw AudioCaptureError.noInput
+        }
         let continuation = levelContinuation
         input.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
             if let data = buffer.floatChannelData {
@@ -61,6 +67,8 @@ final class AudioCapture: @unchecked Sendable {
         engine = nil
         startedAt = nil
     }
+
+    static func isUsable(sampleRate: Double, channels: UInt32) -> Bool { sampleRate > 0 && channels > 0 }
 
     static func inputDevices() -> [AudioInputDevice] {
         var address = AudioObjectPropertyAddress(
