@@ -11,12 +11,18 @@ settings:
     MARKETING_VERSION: "0.1.0"
     CURRENT_PROJECT_VERSION: "1"
     DEAD_CODE_STRIPPING: YES
+packages:
+  WhisperKit:
+    url: https://github.com/argmaxinc/WhisperKit
+    minorVersion: 1.1.1
 targets:
   Parrot:
     type: application
     platform: macOS
     sources:
       - path: Parrot
+    dependencies:
+      - package: WhisperKit
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.parrot.app

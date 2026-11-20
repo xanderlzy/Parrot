@@ -147,12 +147,63 @@ struct SettingsRow<Control: View>: View {
     }
 }
 
-/// Speech engine choice. Whisper is added in a later task.
+/// Speech engine choice, plus the optional Whisper download.
 struct EngineSettings: View {
     let env: AppEnvironment
+    @AppStorage(TranscriberKind.storageKey) private var engine = TranscriberKind.apple.rawValue
+
+    private var store: WhisperModelStore { env.whisperModel }
+    private var waitingForDownload: Bool { engine == TranscriberKind.whisper.rawValue && !store.isReady }
+
     var body: some View {
-        SettingsRow(title: "Speech engine", detail: "Runs entirely on this Mac.") {
-            Text(TranscriberKind.apple.displayName).font(Theme.Font.body).foregroundStyle(Theme.fg(0.6))
+        SettingsRow(title: "Speech engine",
+                    detail: waitingForDownload ? "Using Apple until Whisper is downloaded." : "Runs entirely on this Mac.") {
+            Picker("", selection: $engine) {
+                ForEach(TranscriberKind.allCases) { Text($0.displayName).tag($0.rawValue) }
+            }
+            .labelsHidden().fixedSize()
         }
+        .onChange(of: engine) { _, _ in env.warmUpEngine() }
+        .onChange(of: store.state) { _, new in if new == .ready { env.warmUpEngine() } }
+
+        SettingsRow(title: "Whisper model", detail: whisperDetail) {
+            switch store.state {
+            case .notDownloaded, .failed:
+                Button("Download") { store.download() }.buttonStyle(MonoButtonStyle(prominent: true))
+            case .downloading(let fraction):
+                HStack(spacing: 10) {
+                    ProgressBar(fraction: fraction).frame(width: 120)
+                    Text("\(Int(fraction * 100))%").font(Theme.Font.caption).monospacedDigit()
+                        .foregroundStyle(Theme.fg(0.5)).frame(width: 34, alignment: .trailing)
+                }
+            case .ready:
+                Button("Remove") { store.remove(); env.warmUpEngine() }.buttonStyle(MonoButtonStyle())
+            }
+        }
+        .animation(Motion.fluid, value: store.state)
+    }
+
+    private var whisperDetail: String {
+        switch store.state {
+        case .notDownloaded: "Optional. Often better with accents and jargon. A few hundred MB."
+        case .downloading: "Downloading…"
+        case .ready: "Downloaded and ready."
+        case .failed(let message): message
+        }
+    }
+}
+
+/// Thin ink progress bar.
+struct ProgressBar: View {
+    let fraction: Double
+    var body: some View {
+        GeometryReader { geo in
+            ZStack(alignment: .leading) {
+                Capsule().fill(Theme.fg(0.12))
+                Capsule().fill(Theme.fg()).frame(width: max(4, geo.size.width * min(1, max(0, fraction))))
+                    .animation(Motion.snappy, value: fraction)
+            }
+        }
+        .frame(height: 4)
     }
 }

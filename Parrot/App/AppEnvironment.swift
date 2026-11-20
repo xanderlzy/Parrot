@@ -20,6 +20,8 @@ final class AppEnvironment {
     /// Set once Sparkle is wired up (Task 14).
     var updater: Updater?
     let polishClient = SystemModelClient()
+    let whisperModel = WhisperModelStore()
+    private var whisper: WhisperTranscriber?
     var polishAvailable: Bool { polishClient.isAvailable }
     private var trustPoll: Timer?
 
@@ -30,9 +32,10 @@ final class AppEnvironment {
             ?? (try! ModelContainer(for: DictationRecord.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true)))
         history = HistoryStore(container: container, stats: stats, policy: { RetentionPolicy.current() })
         let apple = appleTranscriber
+        weak var weakSelf: AppEnvironment?
         controller = DictationController(
             audio: audio,
-            transcriber: { apple },
+            transcriber: { weakSelf?.currentTranscriber() ?? apple },
             polisher: FoundationPolisher(client: polishClient),
             inserter: inserter,
             sink: history,
@@ -40,10 +43,34 @@ final class AppEnvironment {
         audio.deviceUID = defaults.string(forKey: "inputDeviceUID")
         let controller = controller
         hotkeys.onAction = { controller.enqueue($0) }
+        weakSelf = self
         window = MainWindowController { [unowned self] nav in AnyView(MainWindow(env: self, navigation: nav)) }
         NotificationCenter.default.addObserver(forName: .parrotOpenSettings, object: nil, queue: .main) { _ in
             MainActor.assumeIsolated { AppEnvironment.shared.window.show(.settings) }
         }
+    }
+
+    var selectedEngine: TranscriberKind {
+        TranscriberKind(rawValue: UserDefaults.standard.string(forKey: TranscriberKind.storageKey) ?? "") ?? .apple
+    }
+
+    var effectiveEngine: TranscriberKind {
+        .effective(selected: selectedEngine, whisperReady: whisperModel.isReady)
+    }
+
+    func currentTranscriber() -> Transcriber {
+        guard effectiveEngine == .whisper, let folder = whisperModel.modelFolder else { return appleTranscriber }
+        if let whisper { return whisper }
+        let w = WhisperTranscriber(modelFolder: folder)
+        whisper = w
+        return w
+    }
+
+    /// Loads the selected engine's model in the background so the first dictation is quick.
+    func warmUpEngine() {
+        if effectiveEngine != .whisper { whisper = nil }
+        let t = currentTranscriber()
+        Task.detached { try? await t.prepare() }
     }
 
     func setHotkey(_ key: HotkeyKey) {
@@ -76,6 +103,7 @@ final class AppEnvironment {
     func prepareSpeech() {
         let t = appleTranscriber
         Task.detached { try? await t.prepare() }
+        if effectiveEngine == .whisper { warmUpEngine() }
     }
 }
 
