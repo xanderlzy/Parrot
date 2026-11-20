@@ -1,5 +1,9 @@
 # Parrot
 
+> **Parrot has moved into [Sidekick](https://github.com/xanderlzy/sidekick).**
+> It lives on there as the **Dictation** tool: the same hold-a-key, speak, clean-text experience, alongside other small tools for your Mac.
+> Parrot won't get further updates. [Download Sidekick](https://github.com/xanderlzy/sidekick/releases/latest), turn on Dictation, and your Parrot history and settings come with you automatically.
+
 Hold a key, speak, and clean text appears wherever you're typing. Parrot runs entirely on your Mac: Apple's on-device speech engine (or optional local Whisper) transcribes, and Apple Intelligence tidies the result. No accounts, and nothing you say leaves your Mac.
 
 **Requirements:** Apple Silicon Mac, macOS 26 or later. Apple Intelligence on for polishing (optional).
