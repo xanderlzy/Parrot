@@ -10,7 +10,11 @@
 		0A3F80772E737D5D97A03735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DED3BB0607C596D6ABF8138 /* Assets.xcassets */; };
 		2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF48AFCF5175FD1CD87C823 /* Theme.swift */; };
 		4E592C539B031FD63AFAF638 /* HotkeyStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */; };
+		556695FFAE7FD36B2682ECCC /* HotkeyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC85D39BBA439E1E9CE2C9 /* HotkeyKey.swift */; };
 		83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */; };
+		870AA2D42197EA20D90AA3FA /* HotkeyKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */; };
+		9E695D44C207DBC20FB6F972 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053217FF7D9A3E8991B61BED /* Permissions.swift */; };
+		B8E9EA5B43204C318777E293 /* HotkeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3250393D311725BA41E6476 /* HotkeyMonitor.swift */; };
 		CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */; };
 		FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */; };
 /* End PBXBuildFile section */
@@ -26,19 +30,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053217FF7D9A3E8991B61BED /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachineTests.swift; sourceTree = "<group>"; };
 		2AA62BB3552276743C5C57CB /* Parrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DED3BB0607C596D6ABF8138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		5CF48AFCF5175FD1CD87C823 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		78DC85D39BBA439E1E9CE2C9 /* HotkeyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyKey.swift; sourceTree = "<group>"; };
 		86EB00088EF3399CE7474B84 /* Parrot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Parrot.entitlements; sourceTree = "<group>"; };
 		8E2157D89DC48D0B8FFBBB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachine.swift; sourceTree = "<group>"; };
 		9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3250393D311725BA41E6476 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
 		A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParrotApp.swift; sourceTree = "<group>"; };
+		ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyKeyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		00FC09AC302D0F56245FB01F /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				053217FF7D9A3E8991B61BED /* Permissions.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		0A2A53784379E840DD9D99E5 /* Parrot */ = {
 			isa = PBXGroup;
 			children = (
@@ -46,6 +62,7 @@
 				6B713EBFB980552C129298B7 /* Design */,
 				3854C926667CAE579EB8624E /* Input */,
 				F685CAAE0CA635741C38CDD2 /* Resources */,
+				00FC09AC302D0F56245FB01F /* Support */,
 			);
 			path = Parrot;
 			sourceTree = "<group>";
@@ -53,6 +70,7 @@
 		17F2469897ACC00E14F1F3A3 /* ParrotTests */ = {
 			isa = PBXGroup;
 			children = (
+				ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */,
 				1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */,
 				3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */,
 			);
@@ -62,6 +80,8 @@
 		3854C926667CAE579EB8624E /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				78DC85D39BBA439E1E9CE2C9 /* HotkeyKey.swift */,
+				A3250393D311725BA41E6476 /* HotkeyMonitor.swift */,
 				96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */,
 			);
 			path = Input;
@@ -205,8 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				556695FFAE7FD36B2682ECCC /* HotkeyKey.swift in Sources */,
+				B8E9EA5B43204C318777E293 /* HotkeyMonitor.swift in Sources */,
 				4E592C539B031FD63AFAF638 /* HotkeyStateMachine.swift in Sources */,
 				83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */,
+				9E695D44C207DBC20FB6F972 /* Permissions.swift in Sources */,
 				2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				870AA2D42197EA20D90AA3FA /* HotkeyKeyTests.swift in Sources */,
 				FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */,
 				CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */,
 			);
