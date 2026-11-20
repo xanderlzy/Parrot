@@ -14,15 +14,20 @@
 		3F51BCE2B15300AA20A58215 /* AppleTranscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47444EE4AFB450273388CBB7 /* AppleTranscriber.swift */; };
 		4E592C539B031FD63AFAF638 /* HotkeyStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */; };
 		556695FFAE7FD36B2682ECCC /* HotkeyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC85D39BBA439E1E9CE2C9 /* HotkeyKey.swift */; };
+		67739602A91D6F2C58549388 /* PolishGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103CFAEC413558EB7967F214 /* PolishGuard.swift */; };
 		758F44E0DB54B64F7F8F93F5 /* LevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2699861C2CB0D7B9F68EAE41 /* LevelMeter.swift */; };
 		83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */; };
+		842F77D45C6FB135448FC9CB /* PolisherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E702581AC484D42E11FA0B7 /* PolisherTests.swift */; };
 		870AA2D42197EA20D90AA3FA /* HotkeyKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */; };
 		91B92D970C49D379433EC6BA /* PillState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837F16672B75B30E70E984AE /* PillState.swift */; };
 		9BA09DEFA6A249CD93B3B77B /* DictationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B812EAD5C6D92BEB2882BD /* DictationController.swift */; };
 		9E695D44C207DBC20FB6F972 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053217FF7D9A3E8991B61BED /* Permissions.swift */; };
+		9ED586ED505475A7A9E06E13 /* SystemModelIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077AC29DDABFFA75CF806E73 /* SystemModelIntegrationTests.swift */; };
+		A74A5DAC20E98A484D82F886 /* PolishGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA3D20DB79CF911036A8609 /* PolishGuardTests.swift */; };
 		A8AAED2487BFD4CD035253FE /* AudioCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF501DBA13EF9AB8329B7A /* AudioCapture.swift */; };
 		B05615BB528CFED290B79410 /* DictationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B79A5B7CE96428450324ACB /* DictationControllerTests.swift */; };
 		B8E9EA5B43204C318777E293 /* HotkeyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3250393D311725BA41E6476 /* HotkeyMonitor.swift */; };
+		C674376E4CEF80F50CF79D92 /* Polisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4C3F1849419C873E9254C /* Polisher.swift */; };
 		CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */; };
 		CC2CDDAA5887320AA232156B /* Transcriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32748C0A6076C524890C15C2 /* Transcriber.swift */; };
 		D1F09D479ED41C5E3E13C05F /* TextInserterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8939060B5C3FA7D8B4EC4 /* TextInserterTests.swift */; };
@@ -43,12 +48,16 @@
 
 /* Begin PBXFileReference section */
 		053217FF7D9A3E8991B61BED /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		077AC29DDABFFA75CF806E73 /* SystemModelIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemModelIntegrationTests.swift; sourceTree = "<group>"; };
+		103CFAEC413558EB7967F214 /* PolishGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishGuard.swift; sourceTree = "<group>"; };
 		1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachineTests.swift; sourceTree = "<group>"; };
 		19B812EAD5C6D92BEB2882BD /* DictationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictationController.swift; sourceTree = "<group>"; };
+		1AA3D20DB79CF911036A8609 /* PolishGuardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolishGuardTests.swift; sourceTree = "<group>"; };
 		2699861C2CB0D7B9F68EAE41 /* LevelMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelMeter.swift; sourceTree = "<group>"; };
 		2AA62BB3552276743C5C57CB /* Parrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DED3BB0607C596D6ABF8138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32748C0A6076C524890C15C2 /* Transcriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcriber.swift; sourceTree = "<group>"; };
+		32E4C3F1849419C873E9254C /* Polisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polisher.swift; sourceTree = "<group>"; };
 		3629942A1A276322CAA6C79F /* TextInserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInserter.swift; sourceTree = "<group>"; };
 		3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		47444EE4AFB450273388CBB7 /* AppleTranscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTranscriber.swift; sourceTree = "<group>"; };
@@ -59,6 +68,7 @@
 		837F16672B75B30E70E984AE /* PillState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillState.swift; sourceTree = "<group>"; };
 		86EB00088EF3399CE7474B84 /* Parrot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Parrot.entitlements; sourceTree = "<group>"; };
 		8E2157D89DC48D0B8FFBBB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8E702581AC484D42E11FA0B7 /* PolisherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolisherTests.swift; sourceTree = "<group>"; };
 		96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachine.swift; sourceTree = "<group>"; };
 		9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3250393D311725BA41E6476 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
@@ -88,6 +98,7 @@
 				3854C926667CAE579EB8624E /* Input */,
 				DACA77841D917E0D89EEFB15 /* Output */,
 				3197B5A529F39A27CF72BA46 /* Pipeline */,
+				9B9E0B1FDFA0CA386C4B4729 /* Polish */,
 				F685CAAE0CA635741C38CDD2 /* Resources */,
 				00FC09AC302D0F56245FB01F /* Support */,
 				1A94350ADBD3020641B26111 /* Transcription */,
@@ -104,7 +115,10 @@
 				ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */,
 				1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */,
 				F1FB66E768F48A7A8B6FDB18 /* LevelMeterTests.swift */,
+				8E702581AC484D42E11FA0B7 /* PolisherTests.swift */,
+				1AA3D20DB79CF911036A8609 /* PolishGuardTests.swift */,
 				3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */,
+				077AC29DDABFFA75CF806E73 /* SystemModelIntegrationTests.swift */,
 				E0E8939060B5C3FA7D8B4EC4 /* TextInserterTests.swift */,
 			);
 			path = ParrotTests;
@@ -178,6 +192,15 @@
 				837F16672B75B30E70E984AE /* PillState.swift */,
 			);
 			path = Pill;
+			sourceTree = "<group>";
+		};
+		9B9E0B1FDFA0CA386C4B4729 /* Polish */ = {
+			isa = PBXGroup;
+			children = (
+				32E4C3F1849419C873E9254C /* Polisher.swift */,
+				103CFAEC413558EB7967F214 /* PolishGuard.swift */,
+			);
+			path = Polish;
 			sourceTree = "<group>";
 		};
 		B18DEB99FBDDDD742983E524 /* Audio */ = {
@@ -320,6 +343,8 @@
 				83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */,
 				9E695D44C207DBC20FB6F972 /* Permissions.swift in Sources */,
 				91B92D970C49D379433EC6BA /* PillState.swift in Sources */,
+				67739602A91D6F2C58549388 /* PolishGuard.swift in Sources */,
+				C674376E4CEF80F50CF79D92 /* Polisher.swift in Sources */,
 				EB4B3C7E6C802D6946C5F612 /* TextInserter.swift in Sources */,
 				2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */,
 				CC2CDDAA5887320AA232156B /* Transcriber.swift in Sources */,
@@ -335,7 +360,10 @@
 				870AA2D42197EA20D90AA3FA /* HotkeyKeyTests.swift in Sources */,
 				FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */,
 				023545A1E5830655EA9FE9DD /* LevelMeterTests.swift in Sources */,
+				A74A5DAC20E98A484D82F886 /* PolishGuardTests.swift in Sources */,
+				842F77D45C6FB135448FC9CB /* PolisherTests.swift in Sources */,
 				CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */,
+				9ED586ED505475A7A9E06E13 /* SystemModelIntegrationTests.swift in Sources */,
 				D1F09D479ED41C5E3E13C05F /* TextInserterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

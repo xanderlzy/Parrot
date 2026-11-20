@@ -20,7 +20,7 @@ final class AppEnvironment {
         controller = DictationController(
             audio: audio,
             transcriber: { apple },
-            polisher: PassthroughPolisher(),
+            polisher: FoundationPolisher(client: SystemModelClient()),
             inserter: inserter,
             sink: NullSink(),
             sounds: NullSounds())
