@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A3F80772E737D5D97A03735 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DED3BB0607C596D6ABF8138 /* Assets.xcassets */; };
 		2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF48AFCF5175FD1CD87C823 /* Theme.swift */; };
+		4E592C539B031FD63AFAF638 /* HotkeyStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */; };
 		83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */; };
 		CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */; };
+		FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,12 +26,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachineTests.swift; sourceTree = "<group>"; };
 		2AA62BB3552276743C5C57CB /* Parrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DED3BB0607C596D6ABF8138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		5CF48AFCF5175FD1CD87C823 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		86EB00088EF3399CE7474B84 /* Parrot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Parrot.entitlements; sourceTree = "<group>"; };
 		8E2157D89DC48D0B8FFBBB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachine.swift; sourceTree = "<group>"; };
 		9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParrotApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,6 +44,7 @@
 			children = (
 				6E961D3A065C9D92A4E0F1D0 /* App */,
 				6B713EBFB980552C129298B7 /* Design */,
+				3854C926667CAE579EB8624E /* Input */,
 				F685CAAE0CA635741C38CDD2 /* Resources */,
 			);
 			path = Parrot;
@@ -48,9 +53,18 @@
 		17F2469897ACC00E14F1F3A3 /* ParrotTests */ = {
 			isa = PBXGroup;
 			children = (
+				1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */,
 				3AE40C9252A9DA96AD773F9A /* SmokeTests.swift */,
 			);
 			path = ParrotTests;
+			sourceTree = "<group>";
+		};
+		3854C926667CAE579EB8624E /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		523F1B653038F8179FAFFDCF = {
@@ -191,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E592C539B031FD63AFAF638 /* HotkeyStateMachine.swift in Sources */,
 				83141461BC7F0F6DAC683507 /* ParrotApp.swift in Sources */,
 				2820EBDE1122E6DF73FC60C4 /* Theme.swift in Sources */,
 			);
@@ -200,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */,
 				CAD8AF9ABFCC943288A0FE38 /* SmokeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
