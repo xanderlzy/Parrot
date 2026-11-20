@@ -25,6 +25,7 @@ final class MainWindowController: NSObject, NSWindowDelegate {
     }
 
     var isVisible: Bool { window?.isVisible ?? false }
+    var windowFrame: NSRect? { window?.frame }
 
     func show(_ tab: MainTab? = nil) {
         if let tab { navigation.tab = tab }
@@ -47,7 +48,11 @@ final class MainWindowController: NSObject, NSWindowDelegate {
         w.isReleasedWhenClosed = false
         w.minSize = NSSize(width: 720, height: 520)
         w.title = "Parrot"
-        w.contentView = NSHostingView(rootView: makeContent(navigation))
+        let host = NSHostingView(rootView: makeContent(navigation))
+        // The window owns its size. Left on, SwiftUI resizes it to the content's ideal size,
+        // which for flexible onboarding pages is thousands of points tall (off-screen buttons).
+        host.sizingOptions = []
+        w.contentView = host
         w.center()
         w.delegate = self
         return w

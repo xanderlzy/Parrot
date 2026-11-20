@@ -45,6 +45,7 @@
 		9BA09DEFA6A249CD93B3B77B /* DictationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B812EAD5C6D92BEB2882BD /* DictationController.swift */; };
 		9E695D44C207DBC20FB6F972 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053217FF7D9A3E8991B61BED /* Permissions.swift */; };
 		9ED586ED505475A7A9E06E13 /* SystemModelIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077AC29DDABFFA75CF806E73 /* SystemModelIntegrationTests.swift */; };
+		A253138F46960D6F372156F1 /* MainWindowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2164E65EA207FE5E73E7DF9 /* MainWindowTests.swift */; };
 		A4435BFC406AF1D4FAB75F7A /* SoundsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9D53B38439B3177B76345E /* SoundsTests.swift */; };
 		A5421DF0CD21843F1D3D7788 /* OnboardingFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF9BF366E524807454F9728 /* OnboardingFlowTests.swift */; };
 		A5D9080B9F289E4A8B65E2D4 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BD575D712E8A997BD61182 /* OnboardingFlow.swift */; };
@@ -134,6 +135,7 @@
 		93103B21D51435B91E18C724 /* StatsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsStore.swift; sourceTree = "<group>"; };
 		96978DD6A6BC94E94ADB9CCF /* HotkeyStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyStateMachine.swift; sourceTree = "<group>"; };
 		9BBC3DE681C1554B026EA592 /* ParrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2164E65EA207FE5E73E7DF9 /* MainWindowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowTests.swift; sourceTree = "<group>"; };
 		A3250393D311725BA41E6476 /* HotkeyMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotkeyMonitor.swift; sourceTree = "<group>"; };
 		A5FBE79061D594327AC3BEC6 /* ParrotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParrotApp.swift; sourceTree = "<group>"; };
 		AB6D02FD953B2350B3FBF259 /* AppleTranscriberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleTranscriberTests.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				ED7172015FA38243E18D1C49 /* HotkeyKeyTests.swift */,
 				1712AA3D599A157CA7057949 /* HotkeyStateMachineTests.swift */,
 				F1FB66E768F48A7A8B6FDB18 /* LevelMeterTests.swift */,
+				A2164E65EA207FE5E73E7DF9 /* MainWindowTests.swift */,
 				1EF9BF366E524807454F9728 /* OnboardingFlowTests.swift */,
 				8E702581AC484D42E11FA0B7 /* PolisherTests.swift */,
 				1AA3D20DB79CF911036A8609 /* PolishGuardTests.swift */,
@@ -568,6 +571,7 @@
 				870AA2D42197EA20D90AA3FA /* HotkeyKeyTests.swift in Sources */,
 				FB277AC9A338E3764D1B4696 /* HotkeyStateMachineTests.swift in Sources */,
 				023545A1E5830655EA9FE9DD /* LevelMeterTests.swift in Sources */,
+				A253138F46960D6F372156F1 /* MainWindowTests.swift in Sources */,
 				A5421DF0CD21843F1D3D7788 /* OnboardingFlowTests.swift in Sources */,
 				A74A5DAC20E98A484D82F886 /* PolishGuardTests.swift in Sources */,
 				842F77D45C6FB135448FC9CB /* PolisherTests.swift in Sources */,
