@@ -11,6 +11,7 @@ final class AppEnvironment {
     let inserter = TextInserter()
     let hotkeys: HotkeyMonitor
     let controller: DictationController
+    private(set) var pill: PillPresenter?
     private var trustPoll: Timer?
 
     private init() {
@@ -23,11 +24,13 @@ final class AppEnvironment {
             polisher: FoundationPolisher(client: SystemModelClient()),
             inserter: inserter,
             sink: NullSink(),
-            sounds: NullSounds())
+            sounds: SystemSounds())
         audio.deviceUID = defaults.string(forKey: "inputDeviceUID")
         let controller = controller
         hotkeys.onAction = { controller.enqueue($0) }
     }
+
+    func showPill() { if pill == nil { pill = PillPresenter(controller: controller) } }
 
     /// Starts listening for the hotkey once Accessibility is granted.
     func startHotkeys() {

@@ -19,6 +19,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         guard NSClassFromString("XCTestCase") == nil else { return }
         let env = AppEnvironment.shared
         env.prepareSpeech()
+        env.showPill()
         if !Permissions.accessibility { Permissions.promptAccessibility() }
         env.startHotkeys()
     }
